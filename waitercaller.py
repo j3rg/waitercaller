@@ -82,7 +82,7 @@ def login():
         stored_user = DB.get_user(form.loginemail.data)
         if stored_user and PH.validate_password(form.loginpassword.data, stored_user['salt'], stored_user['hashed']):
             user = User(form.loginemail.data)
-            login_user(user)
+            login_user(user, remember=True)
             return redirect(url_for('account'))
         form.loginemail.errors.append("Email or password invalid")
     return render_template("home.html", loginform=form, registrationform=RegistrationForm())
