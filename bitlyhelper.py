@@ -1,4 +1,4 @@
-import urllib2
+import urllib3
 import json
 
 TOKEN = "a30ecd42863a50c603284dc1127677869408cd23"
@@ -10,9 +10,9 @@ class BitlyHelper:
     def shorten_url(self, longurl):
         try:
             url = ROOT_URL + SHORTEN.format(TOKEN, longurl)
-            response = urllib2.urlopen(url).read()
+            response = urllib3.urlopen(url).read()
             jr = json.loads(response)
             return jr['data']['url']
         except Exception as e:
-            print e
+            print (e)
 
