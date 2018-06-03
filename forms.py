@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField
 from wtforms import SubmitField
-from wtforms import TextField
+from wtforms import StringField
 from wtforms.fields.html5 import EmailField
 from wtforms import validators
 
@@ -21,5 +21,5 @@ class LoginForm(FlaskForm):
     submit = SubmitField('submit', [validators.DataRequired()])
 
 class CreateTableForm(FlaskForm):
-    tablenumber = TextField('tablenumber',validators=[validators.DataRequired()])
+    tablenumber = StringField('tablenumber',validators=[validators.DataRequired()])
     submit = SubmitField('submit',[validators.DataRequired()])
