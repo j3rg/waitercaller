@@ -106,9 +106,9 @@ def register():
         if DB.get_user(form.email.data):
             form.email.errors.append("Email address already registered")
             return render_template('home.html', registrationform=form)
-        salt = PH.get_salt()
-        print(type(salt), file=sys.stderr)
-        print(type(form.password2.data), file=sys.stderr)
+        salt = PH.get_salt().decode('utf-8')
+        #print(type(salt), file=sys.stderr)
+        #print(type(form.password2.data), file=sys.stderr)
         hashed = PH.get_hash(form.password2.data + salt)
         DB.add_user(form.email.data, salt, hashed)
         return render_template("home.html", loginform=LoginForm(),
