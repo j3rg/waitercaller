@@ -1,3 +1,4 @@
+import config
 import pymongo
 from bson.objectid import ObjectId
 
@@ -6,7 +7,7 @@ DATABASE = "waitercaller"
 class DBHelper:
 
     def __init__(self):
-        client = pymongo.MongoClient()
+        client = pymongo.MongoClient(config.db_host)
         self.db = client[DATABASE]
 
     def get_user(self, email):
